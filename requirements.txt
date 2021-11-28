@@ -1,0 +1,4 @@
+certifi==2021.10.8
+confluent-kafka==1.7.0
+elasticsearch==7.15.2
+urllib3==1.26.7

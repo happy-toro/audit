@@ -1,0 +1,9 @@
+Dockerfile
+
+.gitignore
+Readme.md
+
+__pycache__
+*/__pycache__
+k8s
+

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: audit-consumer
+  labels:
+    app: audit-consumer
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: audit-consumer  
+  template:
+    metadata:
+      labels:
+        app: audit-consumer    
+    spec:
+      containers:
+      - name: con-audit-consumer
+        image: sftan/audit-consumer
+        env:
+          - name: ELASTICSEARCH_HOSTS
+            value: "['https://common-es-master-0.common-es-master.default.svc.cluster.local:9200','https://common-es-master-1.common-es-master.default.svc.cluster.local:9200']"
+          - name: ELASTICSEARCH_USE_SSL
+            value: "True"  
+          - name: ELASTICSEARCH_PASSWORD
+            value: "40TnV46LTXz463C771ZYfibk"  
+          - name: KAFKA_BOOTSTRAP_SERVERS
+            value: "kafka-0.hs-kafka.default.svc.cluster.local:9092,kafka-1.hs-kafka.default.svc.cluster.local:9092,kafka-2.hs-kafka.default.svc.cluster.local:9092"
